@@ -1,0 +1,100 @@
+{
+  "theme": "light",
+  "archetype": "ARCHETYPE 6 (VIBRANT PLAY) mixed with ARCHETYPE 3 (PASTEL & SOFT)",
+  "typography": {
+    "headings": "Nunito (Friendly, approachable for school environment)",
+    "body": "Figtree (Clean, highly legible)",
+    "rules": [
+      "H1: text-4xl sm:text-5xl font-black tracking-tight",
+      "H2: text-2xl sm:text-3xl font-bold tracking-tight",
+      "H3: text-xl sm:text-2xl font-semibold",
+      "Body: text-base leading-relaxed",
+      "Small/Labels: text-sm tracking-wide uppercase font-semibold text-slate-500"
+    ]
+  },
+  "colors": {
+    "primary": "#0ea5e9",
+    "primary_hover": "#0284c7",
+    "secondary": "#fbbf24",
+    "background": "#f8fafc",
+    "surface": "#ffffff",
+    "text_main": "#0f172a",
+    "text_muted": "#64748b",
+    "border": "#e2e8f0",
+    "user_event_colors": [
+      "bg-blue-100 text-blue-900 border-blue-200 border-l-4 border-l-blue-500",
+      "bg-emerald-100 text-emerald-900 border-emerald-200 border-l-4 border-l-emerald-500",
+      "bg-amber-100 text-amber-900 border-amber-200 border-l-4 border-l-amber-500",
+      "bg-rose-100 text-rose-900 border-rose-200 border-l-4 border-l-rose-500",
+      "bg-purple-100 text-purple-900 border-purple-200 border-l-4 border-l-purple-500"
+    ],
+    "rules": [
+      "No pure black or gray, use slate/blue-gray tints.",
+      "Use high contrast text for accessibility inside event blocks."
+    ]
+  },
+  "visual_enhancers": {
+    "corners": "rounded-2xl for main containers, rounded-xl for calendar blocks, rounded-full for buttons",
+    "shadows": "Soft ambient shadows: shadow-[0_8px_30px_rgb(0,0,0,0.04)]",
+    "borders": "1px solid border-slate-200 for structural elements, softer for inner elements",
+    "glassmorphism": "Used only for floating action buttons or sticky mobile bottom nav: backdrop-blur-xl bg-white/80 border-t border-slate-200"
+  },
+  "grids": {
+    "desktop_calendar": "CSS Grid with 6 columns (1 for time labels, 5 for Mon-Fri) and 12 rows (07:00 to 18:00). Map rows directly to hours.",
+    "mobile_calendar": "CSS Grid with 2 columns (time labels + single day) or a vertically scrollable list.",
+    "dashboard_layout": "Sidebar (250px) + Main Content area (1fr)"
+  },
+  "layouts": {
+    "login": "Split screen: Left side form (white bg, centered), Right side image covering full height with a subtle overlay.",
+    "dashboard_desktop": "Left Sidebar for filters (Team members with colored checkboxes), Week Navigation on top header, Main Calendar grid taking full remaining space.",
+    "dashboard_mobile": "Top header with Day/Week toggle, horizontal swipeable days, single-day vertical grid. Floating Action Button (FAB) for '+ Novo compromisso'."
+  },
+  "motion": {
+    "hover": "Slight lift (-translate-y-0.5) and shadow increase on event blocks and buttons.",
+    "transitions": "transition-transform duration-200 ease-out, transition-colors duration-200 on interactables (never use transition-all globally).",
+    "conflict_warning": "Gentle pulse animation (animate-pulse) on the border/icon to draw attention to scheduling conflicts without blocking."
+  },
+  "accessibility": {
+    "contrast": "Ensure APCA contrast minimums. Text on pastel backgrounds must be dark (e.g., text-blue-900).",
+    "aria": "Use aria-labels for time slots (e.g., 'Segunda-feira 08:00').",
+    "testing": "All interactive elements MUST include data-testid (e.g., data-testid='btn-new-appointment', data-testid='login-submit')."
+  },
+  "media": {
+    "image_urls": [
+      {
+        "url": "https://images.unsplash.com/photo-1760351561007-526f5353cc76?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwxfHx0ZWFjaGVycyUyMHdvcmtpbmclMjB0b2dldGhlciUyMG1vZGVybiUyMHNjaG9vbHxlbnwwfHx8fDE3ODcwNzIyNTB8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Two women studying together at a table with laptop",
+        "category": "Login Page Background"
+      }
+    ]
+  },
+  "responsive": {
+    "breakpoint": "Mobile-first approach. Design for small screens (320px-428px) then scale to md and lg.",
+    "layout": "On mobile, sidebar becomes a slide-out drawer or bottom sheet. Calendar transitions from Week View (desktop) to Day View (mobile) to prevent horizontal scrolling and squished columns.",
+    "typography": "Scale down headings on mobile (text-2xl instead of text-4xl). Inputs must be min 16px font size to prevent iOS zoom.",
+    "overflow_guard": "Add overflow-x-hidden to body. Calendar grid container should scroll vertically but not horizontally (except for day swiping if implemented).",
+    "tap_targets": "Minimum 48x48px for all buttons, checkboxes, and time slots."
+  },
+  "instructions_to_main_agent": [
+    "CRITICAL: Use .js (JSX) for all React files, NEVER .tsx. The project setup expects JavaScript.",
+    "Implement the UI in Portuguese (PT-BR) as requested.",
+    "Calendar Grid Logic: Build a CSS Grid for the week view. 1st column for times (07:00 - 18:00), columns 2-6 for Monday-Friday. For precise event positioning, consider mapping hours to grid rows.",
+    "Mobile Calendar: Default to a Single Day view to ensure touch targets are large enough, as 5 days will not fit vertically on a phone. Add a day selector at the top. Allow horizontal scrolling if week view is strictly needed on mobile.",
+    "Colors: Assign a unique pastel color scheme (bg + text + border) to each user. The sidebar checkboxes should reflect these colors.",
+    "Conflicts: If two events overlap, do not block creation. Render them side-by-side or overlapping slightly, and add a warning icon with a tooltip indicating 'Conflito de horário'.",
+    "Forms: Use standard Shadcn UI elements (Input, Button, Checkbox, Select, Dialog) customized with our soft, rounded style.",
+    "Auth: Create a custom JWT auth mock for 'senha123' requirement.",
+    "Testing: Add data-testid attributes to all buttons, inputs, and clickable calendar slots."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Create distinctive frontends that surprise and delight. Avoid generic 'AI slop' aesthetics.",
+    "Use generous spacing (2-3x normal). Cramped designs look cheap.",
+    "Every interaction needs micro-animations - hover states, specific transitions. Static = dead.",
+    "Never apply universal transition (transition: all). Target specific properties.",
+    "Do not center align the app container (.App { text-align: left; }).",
+    "Use pill-shaped or soft-rounded buttons with interaction animations.",
+    "NEVER use emoji characters for icons. Use lucide-react.",
+    "Prioritize reusing pre-existing components from src/components/ui.",
+    "Use 'sonner' for toast notifications."
+  ]
+}

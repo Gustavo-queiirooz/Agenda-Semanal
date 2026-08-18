@@ -1,0 +1,31 @@
+{
+  "summary": "First-finish smoke test after initial implementation of Agenda Colaborativa. Backend (20 checks) and frontend (8 checks) all passed. Critical owner-authorization rule verified: user Gustavo receives 403 with pt-br message when trying to edit/delete Maria's appointment; admin can edit/delete any. Seed data loaded correctly. Frontend calendar renders, modals open in view/edit mode based on ownership, admin route guards correctly.",
+  "tested_scope": ["backend", "frontend", "auth", "integration"],
+  "passed": [
+    "POST /api/auth/login admin returns token and user (role=admin); GET /api/auth/me validates token",
+    "POST /api/auth/login invalid -> 401 with detail 'E-mail ou senha inválidos'",
+    "GET /api/users as admin returns full list with emails; as user returns list with emails masked to null for others (only own email visible)",
+    "POST /api/users (admin) creates user; PUT /api/users/{id} deactivates user (active=false); DELETE /api/users/{id} works",
+    "POST/PUT/DELETE /api/teams work for admin",
+    "GET /api/appointments?start&end returns seed appointments for user's team (6 seed items)",
+    "POST /api/appointments as Gustavo -> user_id auto-assigned to gustavo id",
+    "PUT /api/appointments/{id} own -> 200; PUT other user's -> 403 'Você só pode editar seus próprios compromissos'",
+    "DELETE /api/appointments/{id} other user's -> 403 'Você só pode excluir seus próprios compromissos'",
+    "Admin PUT/DELETE any appointment -> 200",
+    "GET /api/appointments/conflicts detects overlap correctly (returns list, does not block creation)",
+    "POST /api/appointments end<=start -> 400 'O horário final deve ser após o inicial'",
+    "Frontend /login: email+password submit redirects to /",
+    "Frontend Agenda grid renders 72 slots and 7 event tiles for Gustavo's team",
+    "Week nav buttons (prev/today/next) work",
+    "Click on other user's event opens view-only modal (no save/delete buttons)",
+    "Click on own event opens modal with save button (edit mode)",
+    "Click free slot (slot-2026-08-18-10) opens new-appointment modal with title field",
+    "/admin as user Gustavo -> redirected to /",
+    "/admin as admin loads, tabs Usuários/Equipes switch, btn-new-user present"
+  ],
+  "failed": [],
+  "action_items": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "retest_needed": false,
+  "full_testing_deferred": true
+}

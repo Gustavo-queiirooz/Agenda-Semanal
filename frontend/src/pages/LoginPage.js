@@ -91,7 +91,7 @@ export default function LoginPage() {
             </Button>
           </form>
 
-                
+        </div>       
       </div>
 
       {/* Right: image */}

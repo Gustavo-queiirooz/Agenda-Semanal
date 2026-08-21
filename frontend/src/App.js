@@ -10,9 +10,9 @@ import AdminPage from "@/pages/AdminPage";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
-        <AuthProvider>
-          <Routes>
+    <BrowserRouter basename="/Agenda-Semanal">
+      <AuthProvider>
+         <Routes>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/admin" element={<ProtectedRoute adminOnly><AdminPage /></ProtectedRoute>} />
             <Route path="/" element={<ProtectedRoute><AgendaPage /></ProtectedRoute>} />

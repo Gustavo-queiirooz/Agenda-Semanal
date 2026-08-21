@@ -91,15 +91,6 @@ export default function LoginPage() {
             </Button>
           </form>
 
-          <div className="mt-8 p-4 rounded-2xl bg-slate-50 border border-slate-100 text-sm text-slate-600">
-            <div className="font-semibold text-slate-800 mb-2">Contas de demonstração</div>
-            <div className="space-y-1 font-mono text-xs">
-              <div>admin@agenda.local · senha123</div>
-              <div>gustavo@agenda.local · senha123</div>
-              <div>maria@agenda.local · senha123</div>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Right: image */}

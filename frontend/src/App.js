@@ -1,6 +1,6 @@
 import React from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/context/AuthContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import LoginPage from "@/pages/LoginPage";
@@ -10,7 +10,7 @@ import AdminPage from "@/pages/AdminPage";
 function App() {
   return (
     <div className="App">
-    <BrowserRouter basename="/Agenda-Semanal">
+    <HashRouter>
       <AuthProvider>
          <Routes>
             <Route path="/login" element={<LoginPage />} />
@@ -18,7 +18,7 @@ function App() {
             <Route path="/" element={<ProtectedRoute><AgendaPage /></ProtectedRoute>} />
           </Routes>
         </AuthProvider>
-      </BrowserRouter>
+      </HashRouter>>
     </div>
   );
 }
